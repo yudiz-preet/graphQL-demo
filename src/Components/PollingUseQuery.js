@@ -10,8 +10,10 @@ const GET_LAUNCHES = gql`
   }
 `;
 
-function SimpleUseQuery() {
-  const { loading, error, data } = useQuery(GET_LAUNCHES);
+function PollingUseQuery() {
+  const { loading, error, data } = useQuery(GET_LAUNCHES, {
+    pollInterval: 5000 //every 5 seconds
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error)
@@ -25,7 +27,7 @@ function SimpleUseQuery() {
   return (
     <div>
       <DashboardNavigation />
-      <h1>Simple useQuery</h1>
+      <h1>Polling useQuery</h1>
       <ul>
         {data.launches.map((launch) => (
           <li key={launch.mission_name}>{launch.mission_name}</li>
@@ -35,4 +37,4 @@ function SimpleUseQuery() {
   );
 }
 
-export default SimpleUseQuery;
+export default PollingUseQuery;

@@ -6,7 +6,13 @@ const Dashboard = () => {
     <nav>
       <ul>
         <li>
-          <Link to="/simple-use-query">Simple useQuery Example</Link>
+          <Link to="/simple-use-query">Simple useQuery</Link>
+        </li>
+        <li>
+          <Link to="/polling-use-query">Polling useQuery</Link>
+        </li>
+        <li>
+          <Link to="/refetching-use-query">Refetching useQuery</Link>
         </li>
       </ul>
     </nav>

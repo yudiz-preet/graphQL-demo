@@ -1,8 +1,10 @@
 import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SimpleUseQuery from './Components/SimpleUseQuery';
 import Dashboard from './Components/Dashboard';
+import SimpleUseQuery from './Components/SimpleUseQuery';
+import PollingUseQuery from './Components/PollingUseQuery';
+import RefetchingUseQuery from './Components/RefetchingUseQuery';
 
 // Initialize Apollo Client
 const client = new ApolloClient({
@@ -18,6 +20,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Dashboard />} />
           <Route path="/simple-use-query" element={<SimpleUseQuery />} />
+          <Route path="/polling-use-query" element={<PollingUseQuery />} />
+          <Route path="/refetching-use-query" element={<RefetchingUseQuery />} />
         </Routes>
       </Router>
     </ApolloProvider>
