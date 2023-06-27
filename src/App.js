@@ -1,5 +1,8 @@
 import React from 'react';
-import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SimpleUseQuery from './Components/SimpleUseQuery';
+import Dashboard from './Components/Dashboard';
 
 // Initialize Apollo Client
 const client = new ApolloClient({
@@ -7,51 +10,18 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-// Define GraphQL query
-const GET_LAUNCHES = gql`
-  query {
-    launches(limit: 10) {
-      mission_name
-      launch_date_utc
-      rocket {
-        rocket_name
-      }
-      links {
-        video_link
-      }
-    }
-  }
-`;
-
-// React component
+// Main App component
 function App() {
-  const { loading, error, data } = useQuery(GET_LAUNCHES);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-
-  return (
-    <div>
-      <h1>SpaceX Launches</h1>
-      {data.launches.map((launch) => (
-        <div key={launch.mission_name}>
-          <h2>{launch.mission_name}</h2>
-          <p>Date: {launch.launch_date_utc}</p>
-          <p>Rocket: {launch.rocket.rocket_name}</p>
-          {launch.links.video_link && <a href={launch.links.video_link} target="_blank" rel="noopener noreferrer">Watch Video</a>}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-// Wrap the App component with ApolloProvider
-function ApolloApp() {
   return (
     <ApolloProvider client={client}>
-      <App />
+      <Router>
+        <Routes>
+          <Route path='/' element={<Dashboard />} />
+          <Route path="/simple-use-query" element={<SimpleUseQuery />} />
+        </Routes>
+      </Router>
     </ApolloProvider>
   );
 }
 
-export default ApolloApp;
+export default App;
