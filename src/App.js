@@ -5,6 +5,7 @@ import Dashboard from './Components/Dashboard';
 import SimpleUseQuery from './Components/SimpleUseQuery';
 import PollingUseQuery from './Components/PollingUseQuery';
 import RefetchingUseQuery from './Components/RefetchingUseQuery';
+import SimpleUseMutation from './Components/SimpleUseMutation';
 
 // Initialize Apollo Client
 const client = new ApolloClient({
@@ -22,6 +23,7 @@ function App() {
           <Route path="/simple-use-query" element={<SimpleUseQuery />} />
           <Route path="/polling-use-query" element={<PollingUseQuery />} />
           <Route path="/refetching-use-query" element={<RefetchingUseQuery />} />
+          <Route path="/simple-use-mutation" element={<SimpleUseMutation />} />
         </Routes>
       </Router>
     </ApolloProvider>

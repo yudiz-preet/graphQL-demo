@@ -14,6 +14,9 @@ const Dashboard = () => {
         <li>
           <Link to="/refetching-use-query">Refetching useQuery</Link>
         </li>
+        <li>
+          <Link to="/simple-use-mutation">Simple useMutation</Link>
+        </li>
       </ul>
     </nav>
   );
